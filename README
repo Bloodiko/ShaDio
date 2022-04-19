@@ -1,0 +1,7 @@
+Shadow Audio. 
+
+Record Desktop Audio, keep 5 minutes in cache. 
+
+Hokey similar to "Screenshot" tool. 
+
+Records application audio passivly in a buffer. When pressing a predefined hotkey, the buffer will be saved into a file. Eventually buffer can be cutted to explicitly only save selected content from buffer.
