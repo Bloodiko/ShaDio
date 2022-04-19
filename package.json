@@ -13,5 +13,8 @@
     "recording"
   ],
   "author": "Bastian Jesuiter",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^18.0.4"
+  }
 }

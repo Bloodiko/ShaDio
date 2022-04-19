@@ -1,5 +1,7 @@
-// loop application
-var app = {};
+// run application in loop
+
+
+
 
 /*
 // Permanently record desktop audio from the default input device.
