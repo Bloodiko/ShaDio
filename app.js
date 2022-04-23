@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, globalShortcut } = require('electron');
 const path = require('path');
 
 function createWindow() {
@@ -6,29 +6,51 @@ function createWindow() {
         width: 800,
         height: 600,
         webPreferences: {
-            preload: path.join(__dirname, 'preload.js')
+            preload: path.join(__dirname, 'js/preload.js')
         }
     })
 
     win.loadFile('index.html')
 }
 
-console.log(app);
-
 app.whenReady().then(() => {
+
+    console.log('App is ready');
+
+    // Register a 'CommandOrControl+X' shortcut listener.
+    const ret = globalShortcut.register('CommandOrControl+Shift+X', () => {
+        console.log('CommandOrControl+Shift+X is pressed')
+    })
+
+    if (!ret) {
+        console.log('registration failed')
+    }
+
+    // Check whether a shortcut is registered.
+    console.log(globalShortcut.isRegistered('CommandOrControl+Shift+X'))
+
     createWindow()
 
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) {
             createWindow()
         }
-    })
+    });
+
 })
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
         app.quit()
     }
+})
+
+app.on('will-quit', () => {
+    // Unregister a shortcut.
+    globalShortcut.unregister('CommandOrControl+Shift+X')
+
+    // Unregister all shortcuts.
+    globalShortcut.unregisterAll()
 })
 
 
