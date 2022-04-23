@@ -1,17 +1,21 @@
 {
-  "name": "shadio",
-  "version": "0.0.1",
-  "description": "Records application audio passivly in a buffer. When pressing a predefined hotkey, the buffer will be saved into a file. Eventually buffer can be cutted to explicitly only save selected content from buffer.",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "Shadow",
-    "Audio",
-    "shadio",
-    "recording"
-  ],
-  "author": "Bastian Jesuiter",
-  "license": "ISC"
+    "name": "shadio",
+    "version": "0.0.1",
+    "description": "Records application audio passivly in a buffer. When pressing a predefined hotkey, the buffer will be saved into a file. Eventually buffer can be cutted to explicitly only save selected content from buffer.",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "electron ."
+    },
+    "keywords": [
+        "Shadow",
+        "Audio",
+        "shadio",
+        "recording"
+    ],
+    "author": "Bastian Jesuiter",
+    "license": "ISC",
+    "devDependencies": {
+        "electron": "^18.0.4"
+    }
 }
