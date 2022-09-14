@@ -6,9 +6,31 @@ function createWindow() {
         width: 800,
         height: 600,
         webPreferences: {
-            preload: path.join(__dirname, 'js/preload.js')
-        }
+            preload: path.join(__dirname, 'js/preload.js'),
+            nodeIntegrationInWorker: true
+        },
+        // show: false // uncomment later
     })
+
+    // Register a 'CommandOrControl+H' shortcut listener.
+    const ret = globalShortcut.register('CommandOrControl+Shift+H', () => {
+        console.log('hiding window');
+        win.hide();
+    })
+
+    if (!ret) {
+        console.log('registration failed')
+    }
+
+    // register a 'CommandOrControl+Shift+I' shortcut listener.
+    const ret2 = globalShortcut.register('CommandOrControl+Shift+I', () => {
+        console.log('showing window');
+        win.show();
+    })
+
+    if (!ret2) {
+        console.log('registration failed')
+    }
 
     win.loadFile('index.html')
 }
@@ -16,18 +38,6 @@ function createWindow() {
 app.whenReady().then(() => {
 
     console.log('App is ready');
-
-    // Register a 'CommandOrControl+X' shortcut listener.
-    const ret = globalShortcut.register('CommandOrControl+Shift+X', () => {
-        console.log('CommandOrControl+Shift+X is pressed')
-    })
-
-    if (!ret) {
-        console.log('registration failed')
-    }
-
-    // Check whether a shortcut is registered.
-    console.log(globalShortcut.isRegistered('CommandOrControl+Shift+X'))
 
     createWindow()
 
@@ -46,29 +56,9 @@ app.on('window-all-closed', () => {
 })
 
 app.on('will-quit', () => {
-    // Unregister a shortcut.
-    globalShortcut.unregister('CommandOrControl+Shift+X')
 
     // Unregister all shortcuts.
     globalShortcut.unregisterAll()
 })
 
 
-
-/*
-// Permanently record desktop audio from the default input device.
-const recorder = require('node-record-lpcm16');
-const fs = require('fs');
-
-// create global hotkey with control + alt + printscreen
-const { registerHotkey } = require('node-hotkey');
-registerHotkey('control+alt+printscreen', () => {
-    // start recording
-    recorder.start().pipe(fs.createWriteStream('output.raw'));
-    // stop recording after 5 seconds
-    setTimeout(() => {
-        recorder.stop();
-    }, 5000);
-});
-
-*/
