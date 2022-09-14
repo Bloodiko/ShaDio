@@ -1,6 +1,3 @@
-const { desktopCapturer } = require('electron');
-
-
 /*
 UserMedia Desktop Audio Recorder
 buffer 15 seconds of audio
@@ -8,26 +5,30 @@ buffer 15 seconds of audio
 */
 
 function handleStream(stream) {
+    console.log('got stream');
+    console.log(stream);
 
+
+    document.querySelector('#recordingRunning').innerHTML = 'Recording...';
 }
-
-desktopCapturer.getSources({ types: ['window', 'screen'] }).then(async sources => {
-    for (const source of sources) {
-        console.log(source.name);
-    }
-})
-
-
-try {
-    const stream = await navigator.mediaDevices.getUserMedia({
+function startRecording() {
+    console.log('start recording');
+    navigator.mediaDevices.getUserMedia({
         audio: {
             mandatory: {
                 chromeMediaSource: 'desktop'
             }
+        },
+        video: {
+            mandatory: {
+                chromeMediaSource: 'desktop'
+            }
         }
+    }).then(handleStream, function (err) {
+        console.log('Error: ' + err);
     });
-    handleStream(stream);
 }
-catch (e) {
-    console.log(e);
+
+function stopRecording() {
+    console.log('stop recording');
 }

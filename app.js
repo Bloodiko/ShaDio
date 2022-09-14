@@ -1,13 +1,12 @@
 const { app, BrowserWindow, globalShortcut } = require('electron');
-const path = require('path');
+//const path = require('path');
 
 function createWindow() {
     const win = new BrowserWindow({
         width: 800,
         height: 600,
         webPreferences: {
-            preload: path.join(__dirname, 'js/preload.js'),
-            nodeIntegrationInWorker: true
+            //preload: path.join(__dirname, 'js/preload.js'),
         },
         // show: false // uncomment later
     })
@@ -46,7 +45,6 @@ app.whenReady().then(() => {
             createWindow()
         }
     });
-
 })
 
 app.on('window-all-closed', () => {

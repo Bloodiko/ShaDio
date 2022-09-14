@@ -6,9 +6,7 @@
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-
     <link rel="stylesheet" href="css/index.css">
-    <script src="js/index.js"></script>
 
     <title>ShaDioR</title>
 </head>
@@ -20,9 +18,22 @@
             <span class="icon">&#x23FA;</span>
         </button>
     </div>
+    <div id="saveLocation">
+        <input type="text" id="filename"></input>
+        <label for="filename">Filename</label>
+    </div>
+    <br>
+    <div id="recordingRunning">
+        <span class="icon">&#x23F3;</span>
+    </div>
+    <div id="bufferZone"></div>
     <p></p>
     We are using Node.js <span id="node-version"></span>, Chromium <span id="chrome-version"></span>, and Electron <span
         id="electron-version"></span>.
 </body>
+
+<script src="js/recorderWorker.js"></script>
+
+<script src="js/index.js"></script>
 
 </html>
