@@ -1,5 +1,10 @@
 Shadow Audio. 
 
+== Abandoned ==
+Reason: 
+    This was supposed to work with Ubuntu, but i cannot get the chromium (electron) to record from pulseaudio system monitor. 
+    If i cannot get audio, the whole purpose cannot be fulfilled.
+
 Record Desktop Audio, keep 5 minutes in cache. 
 
 Hokey similar to "Screenshot" tool. 
